@@ -1,4 +1,4 @@
-import { Controller, Req, Get, UseGuards, Post, Body } from '@nestjs/common';
+import { Controller, Req, Get, UseGuards, Post, Body, Query } from '@nestjs/common';
 import { Request } from 'express';
 import { MovieDto } from './dto';
 import { MovieService } from './movie.service';
@@ -15,6 +15,11 @@ export class MovieController {
     createMovieList(@Body() dto: MovieDto ) {
         console.log("movie data",{dto})
         return this.movieService.addMovie(dto)
-    
+    }
+
+    @Get("paginated")
+    getAllPaginated(@Query() query) {
+        console.log("wy ", query)
+        return this.movieService.getAllPaginateData(query)
     }
 }
