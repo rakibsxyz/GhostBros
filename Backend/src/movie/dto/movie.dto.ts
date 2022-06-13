@@ -14,11 +14,14 @@ export class MovieDto {
 
 export class PaginatedMovieDto {
     @IsNumber()
-    skip: number;
+    skip?: number;
 
     @IsNumber()
-    take: number;
+    take?: number;
 
     @IsString()
-    searchText: string;
+    searchText?: string;
+
+    @IsString()
+    order?: string
 }

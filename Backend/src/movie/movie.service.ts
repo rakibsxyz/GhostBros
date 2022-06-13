@@ -40,19 +40,34 @@ export class MovieService {
         const paginatedMovies = await this.prisma.movie.findMany({
             skip: skip ,
             take:take,
+            
             where: {
                 name: {
                     contains:  params.searchText?? ""
                 }
             },
             orderBy: {
-                name: 'asc'
+               id: "asc"
             },
             select:{
                 id: true,
                 name: true
             }
         })
-        return paginatedMovies
+
+        const count = await this.prisma.movie.count({
+            where: {
+                name: {
+                    contains: params.searchText?? ""
+                }
+            }
+        })
+
+        const obj = {
+            count: count,
+            data: paginatedMovies
+        }
+
+        return obj
     }
 }
