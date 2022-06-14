@@ -14,7 +14,7 @@ function LoginPage() {
 
   return (
     <div className="app">
-      {/* <LoginComponent onSubmitForm={onSubmitForm} /> */}
+      <LoginComponent onSubmitForm={onSubmitForm} />
       <SignUp onSubmitForm={onSubmitForm} />
     </div>
   );

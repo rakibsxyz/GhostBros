@@ -1,47 +1,50 @@
 import React from 'react'
 import { loginSchema } from './login';
-
+import { useForm, NestedValue, SubmitHandler  } from 'react-hook-form';
 
 type Props = {
     onSubmitForm: any
 }
+type Option = {
+    label: string;
+    value: string;
+  };
+  type FormValues = {
+    firstName: string;
+    lastName: string;
+    email: string;
+  };
+  
 export default function SignUp(props: Props) {
 
-    // const { register, handleSubmit, setValue, reset } =
-        // useForm<loginSchema>();
+    const { register, handleSubmit, setValue, reset } =
+    useForm<loginSchema>();
 
     return (
         <div className="login-form">
             <div className="title">Sign Up</div>
             <div className="form">
-                <form onSubmit={props.onSubmitForm}>
+                <form onSubmit={handleSubmit(props.onSubmitForm)}>
                     <div className="input-container">
-                        <label>Username </label>
+                        <label>Email </label>
                         <input
                             type="email"
                             className="form-control"
-                            placeholder="Retype Email"
-                            id="email"
-                            // {...register("email")} 
-                            // defaultValue={step5Data?.retypeEmail}
-                            // onBlur={(e) => {
-                            //     setRetypeEmailForMatch(e.target.value);
-                            //     confirmEmail(e);
-                            // }}
+                            placeholder="Company Code"
+                            {...register("email")} 
                         />
                     </div>
                     <div className="input-container">
                         <label>Password </label>
-                        {/* <input type="password" name="pass" required /> */}
-                        {/* {renderErrorMessage("pass")} */}
+                        <input
+                            type="password"
+                            className="form-control"
+                            placeholder="Company Code"
+                            {...register("password")} 
+                        />
                     </div>
                     <div className="button-container">
-                        <button
-                            type="submit"
-                            className="btn btn-primary text-uppercase mx-3"
-                        >
-                            Filter
-                        </button>
+                        <input type="submit" />
                     </div>
                 </form>
             </div>

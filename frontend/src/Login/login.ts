@@ -1,4 +1,4 @@
 export type loginSchema = {
-    name: string;
+    password: string;
     email: string
   };

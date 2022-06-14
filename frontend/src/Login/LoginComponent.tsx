@@ -20,20 +20,17 @@ export default function LoginComponent(props: Props) {
                             type="email"
                             className="form-control"
                             placeholder="Company Code"
-                           
                             {...register("email")} 
-                            // style={{ border: errors.code ? '1px solid red' : '' }}
-
-                            // onChange={(e) => {
-                            //     checkExistence(e.target.value);
-                            //     codeLengthValidation(e.target.value);
-                            // }}
                         />
                     </div>
                     <div className="input-container">
                         <label>Password </label>
-                        {/* <input type="password" name="pass" required /> */}
-                        {/* {renderErrorMessage("pass")} */}
+                        <input
+                            type="password"
+                            className="form-control"
+                            placeholder="Company Code"
+                            {...register("password")} 
+                        />
                     </div>
                     <div className="button-container">
                         <input type="submit" />
