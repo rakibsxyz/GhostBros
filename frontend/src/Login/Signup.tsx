@@ -5,16 +5,7 @@ import { useForm, NestedValue, SubmitHandler  } from 'react-hook-form';
 type Props = {
     onSubmitForm: any
 }
-type Option = {
-    label: string;
-    value: string;
-  };
-  type FormValues = {
-    firstName: string;
-    lastName: string;
-    email: string;
-  };
-  
+
 export default function SignUp(props: Props) {
 
     const { register, handleSubmit, setValue, reset } =

@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import {
   BrowserRouter,
   Routes,
@@ -10,8 +12,7 @@ import {
   Link,
 }
   from 'react-router-dom';
-import LoginPage from './Login/LoginPage';
-import AddMovie from './Movie/AddMovie';
+import Movies from './Movie/MoviePage';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
@@ -19,7 +20,7 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path='/' element={<App />} />
-      <Route path='/movie' element={<AddMovie />} />
+      <Route path='/movie' element={<Movies />} />
     </Routes>
 
   </BrowserRouter>,
