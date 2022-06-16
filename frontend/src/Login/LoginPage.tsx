@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../styles.css";
 import { loginSchema } from './login';
 import LoginComponent from './LoginComponent';
@@ -6,16 +6,25 @@ import SignUp from './Signup';
 
 function LoginPage() {
 
-    const onSubmitForm = (data:loginSchema ) =>{
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
+  const onLogin = (data: loginSchema) => {
+    setIsLoggedIn(true)
 
-    }
-   
-   
+  }
+  const onSignUp = (data: loginSchema) => {
+    setIsLoggedIn(false)
+  }
+
+
 
   return (
     <div className="app">
-      <LoginComponent onSubmitForm={onSubmitForm} />
-      <SignUp onSubmitForm={onSubmitForm} />
+      {
+        isLoggedIn ? <SignUp onSubmitForm={onSignUp} />
+          : <LoginComponent onSubmitForm={onLogin} />
+      }
+
+
     </div>
   );
 }
