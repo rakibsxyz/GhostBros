@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react'
-import { MovieSchema } from '../Features/Movie/MovieSchema';
+import { MovieSchema, PaginatedMovieResponse } from '../Features/Movie/MovieSchema';
 
 export default function useFunctionalityMovies() {
 
@@ -16,21 +16,7 @@ export default function useFunctionalityMovies() {
                     apiUrl,
                     updatedForm
                 );
-
-
                 if (true) {
-                    // navigate({
-                    //     pathname: "/movie",
-                    // });
-                    // StorageAuth.AccessToken = res.data.data.token;
-                    // batch(() => {
-                    //     dispatch(ActionAuth.SetIsLoggedIn(true));
-                    //     dispatch(ActionAuth.SetSessionId(res.data.data.sessionId));
-                    //     dispatch(ActionAuth.SetProfileData(res.data.data.profile));
-                    //     //dispatch(ActionAuth.SetMenuSettingsData(res.data.menuSettings));
-                    // });
-
-                    // if (!!data.previousPath) history.push(data.previousPath);
                 }
                 else {
                     // toast.error(res.data.message);
@@ -47,7 +33,37 @@ export default function useFunctionalityMovies() {
         []
     );
 
+    const onFetchMovies = React.useCallback(
+        async(): Promise<null | PaginatedMovieResponse> => {
+            // const btnLoading = UtilsJQuery.Ladda(".login-form-submit-btn");
+            // btnLoading.start?.();
+            let apiUrl = `http://localhost:3333/movie/paginated?skip=0&take=10`
+            try {
+                const res = await axios.get<PaginatedMovieResponse>(
+                    apiUrl,
+                );
+
+
+                if (res.data) {
+                    return Promise.resolve(res.data);
+                   
+                }
+                else {
+                    // toast.error(res.data.message);
+                }
+
+            } catch (e: any) {
+               
+                console.log("error", e)
+            }
+            // btnLoading.stop?.();
+            return Promise.resolve(null);
+        },
+        []
+    );
+
   return {
-    onAddMovie
+    onAddMovie,
+    onFetchMovies,
   }
 }

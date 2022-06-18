@@ -1,4 +1,3 @@
-import React from 'react'
 import useFunctionalityMovies from '../../hooks/functionalityMovies'
 import AddMovie from './AddMovie'
 import MovieList from './MovieList'
@@ -16,6 +15,9 @@ export default function Movies() {
             
         })
     }
+
+  
+
     return (
         <>
             <div className="movie" >
