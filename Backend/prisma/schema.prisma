@@ -21,8 +21,8 @@ model User {
   firstName String?
   lastName  String?
 
-  @@map("users")
   bookmarks Bookmark[]
+  @@map("users")
 }
 
 model Bookmark {
@@ -32,9 +32,20 @@ model Bookmark {
 
   title       String
   description String?
-  link String
+  link        String
 
   userId Int
-  user User @relation(fields: [userId], references: [id])
+  user   User @relation(fields: [userId], references: [id])
   @@map("bookmarks")
+}
+
+model Movie {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  description String
+  name String
+
+
+  @@map("movies")
 }
