@@ -10,48 +10,50 @@ export default function AddMovie(props: Props) {
         useForm<MovieSchema>();
     return (
         <>
-           
+
             <div className="login-form">
-            <div>AddMovie</div>
-            <div className="form">
-                <form onSubmit={handleSubmit(props.onSubmitForm)}>
-                    <div className="input-container">
-                        <label>Name </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Company Code"
-                            {...register("name")}
-                        />
-                    </div>
-                    <div className="input-container">
-                        <label>Image Url </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Company Code"
-                            {...register("imageUrl")}
-                        />
-                    </div>
-                    <div className="input-container">
-                        <label>Rating</label>
-                        <input
-                            type="number"
-                            className="form-control"
-                            placeholder="Company Code"
-                            {...register("rating")}
-                        />
-                    </div>
-                    <div className="button-container">
-                        {/* <input type="submit" />  */}
-                        <button
-                            type="submit"
-                        >
-                            Add
-                        </button>
-                    </div>
-                </form>
-            </div>
+                <div>Add Movie</div>
+                <div className="form">
+                    <form onSubmit={handleSubmit(props.onSubmitForm)}>
+                        <div className="input-container">
+                            <label>Name </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Enter a movie name"
+                                {...register("name")}
+                            />
+                        </div>
+                        <div className="input-container">
+                            <label>Poster Url </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Enter poster link"
+                                {...register("imageUrl")}
+                            />
+                        </div>
+                        <div className="input-container">
+                            <label>Rating</label>
+                            <input
+                                type="number"
+                                className="form-control"
+                                placeholder="Rating 1 to 5"
+                                defaultValue={1}
+                                min={1}
+                                max={5}
+                                {...register("rating")}
+                            />
+                        </div>
+                        <div className="button-container">
+                            <button
+                                type="submit"
+                            >
+                                Add
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </>
     )

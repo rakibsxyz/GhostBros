@@ -12,8 +12,10 @@ export default function Movies() {
             <div className="movie" >
                 <AddMovie onSubmitForm={onAddMovie} />
             </div>
+            <div>
+                <MovieList />
+            </div>
 
-            <MovieList />
         </>
     )
 }

@@ -1,8 +1,10 @@
 import axios from 'axios';
 import React from 'react'
 import { ApiLoginResponse, loginSchema } from '../Features/Login/login';
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function useFunctionalityAuthentication() {
+    const navigate = useNavigate();
 
     const onLogin = React.useCallback(
         async (form: loginSchema): Promise<null> => {
@@ -16,22 +18,25 @@ export default function useFunctionalityAuthentication() {
                     form
                 );
 
-                if (res.status === 200) {
-                    if (res.data.access_token) {
-                        // StorageAuth.AccessToken = res.data.data.token;
-                        // batch(() => {
-                        //     dispatch(ActionAuth.SetIsLoggedIn(true));
-                        //     dispatch(ActionAuth.SetSessionId(res.data.data.sessionId));
-                        //     dispatch(ActionAuth.SetProfileData(res.data.data.profile));
-                        //     //dispatch(ActionAuth.SetMenuSettingsData(res.data.menuSettings));
-                        // });
 
-                        // if (!!data.previousPath) history.push(data.previousPath);
-                    }
-                    else {
-                        // toast.error(res.data.message);
-                    }
+                if (res.data.access_token) {
+                    navigate({
+                        pathname: "/movie",
+                    });
+                    // StorageAuth.AccessToken = res.data.data.token;
+                    // batch(() => {
+                    //     dispatch(ActionAuth.SetIsLoggedIn(true));
+                    //     dispatch(ActionAuth.SetSessionId(res.data.data.sessionId));
+                    //     dispatch(ActionAuth.SetProfileData(res.data.data.profile));
+                    //     //dispatch(ActionAuth.SetMenuSettingsData(res.data.menuSettings));
+                    // });
+
+                    // if (!!data.previousPath) history.push(data.previousPath);
                 }
+                else {
+                    // toast.error(res.data.message);
+                }
+
             } catch (e: any) {
                 // setErrMsg((e as Error).message);
                 // toast.error(e.message);
@@ -56,7 +61,7 @@ export default function useFunctionalityAuthentication() {
                     form
                 );
 
-                if (res.status === 200) {
+                if (res.status === 201) {
                     if (res.data.access_token) {
                         // StorageAuth.AccessToken = res.data.data.token;
                         // batch(() => {
@@ -91,3 +96,7 @@ export default function useFunctionalityAuthentication() {
 
 
 }
+function useHistory() {
+    throw new Error('Function not implemented.');
+}
+
