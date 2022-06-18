@@ -30,7 +30,7 @@ export default function AddMovie(props: Props) {
                                 type="text"
                                 className="form-control"
                                 placeholder="Enter poster link"
-                                {...register("imageUrl")}
+                                {...register("posterUrl")}
                             />
                         </div>
                         <div className="input-container">

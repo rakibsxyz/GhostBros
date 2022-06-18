@@ -15,7 +15,8 @@ export class MovieService {
             const movie = await this.prisma.movie.create({
                 data: {
                     name: dto.name,
-                    description: dto.description
+                    posterUrl: dto.posterUrl,
+                    rating: dto.rating              
                 },
                 select: {
                     name: true,

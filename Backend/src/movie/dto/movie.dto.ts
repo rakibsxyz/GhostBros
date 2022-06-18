@@ -8,7 +8,10 @@ export class MovieDto {
     name: string;
 
     @IsString()
-    description: string;
+    posterUrl: string;
+
+    @IsNumber()
+    rating: number
 
 }
 
