@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, isString } from "class-validator";
+import { IsNotEmpty, IsNumber, IsString, isString } from "class-validator";
 
 export class MovieDto {
    
@@ -10,4 +10,15 @@ export class MovieDto {
     @IsString()
     description: string;
 
+}
+
+export class PaginatedMovieDto {
+    @IsNumber()
+    skip: number;
+
+    @IsNumber()
+    take: number;
+
+    @IsString()
+    searchText: string;
 }

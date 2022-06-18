@@ -1,7 +1,7 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { MovieDto } from './dto';
+import { MovieDto, PaginatedMovieDto } from './dto';
 
 @Injectable()
 export class MovieService {
@@ -32,5 +32,27 @@ export class MovieService {
     async getAll() {
         const list = await this.prisma.movie.findMany()
         return list
+    }
+
+    async getAllPaginateData(params: PaginatedMovieDto){
+        const skip = +params.skip
+        const take = +params.take
+        const paginatedMovies = await this.prisma.movie.findMany({
+            skip: skip ,
+            take:take,
+            where: {
+                name: {
+                    contains:  params.searchText?? ""
+                }
+            },
+            orderBy: {
+                name: 'asc'
+            },
+            select:{
+                id: true,
+                name: true
+            }
+        })
+        return paginatedMovies
     }
 }
