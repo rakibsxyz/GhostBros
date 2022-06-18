@@ -8,7 +8,7 @@ export class MovieController {
     constructor(private movieService:  MovieService) {}
     @Get("all")
     getMovieList(@Req() req: Request) {
-
+        return this.movieService.getAll()
     }
 
     @Post("add")

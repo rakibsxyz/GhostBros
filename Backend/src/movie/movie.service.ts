@@ -28,4 +28,9 @@ export class MovieService {
             throw error
         }
     }
+
+    async getAll() {
+        const list = await this.prisma.movie.findMany()
+        return list
+    }
 }
