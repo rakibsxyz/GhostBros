@@ -12,7 +12,7 @@ import {
   Link,
 }
   from 'react-router-dom';
-import Movies from './Movie/MoviePage';
+import Movies from './Features/Movie/MoviePage';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
